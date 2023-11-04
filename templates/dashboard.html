@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="">
+        <div style="height: 100px;background-color: rgb(4, 4, 45);">
+        <a href="dashboard" style="color: white;float: left;margin: 20px;">Dashboard</a>&nbsp;&nbsp;|
+        <a href="viewdata" style="color: white;float: left;margin: 20px;">View Data</a>&nbsp;&nbsp;|
+        <a href="uploaddata" style="color: white;float: left;margin: 20px;">Upload Data</a>
+
+    </div>
+    <div class="col-lg-12">
+        Dash Board
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+				<script type="text/javascript">
+				  google.charts.load("current", {packages:["corechart"]});
+				  google.charts.setOnLoadCallback(drawChart);
+				  function drawChart() {
+					var data = google.visualization.arrayToDataTable([
+					  ['Task', 'Hours per Day'],
+					  ['Work',     11],
+					  ['Eat',      2],
+					  ['Commute',  2],
+					  ['Watch TV', 2],
+					  ['Sleep',    7]
+					]);
+			
+					var options = {
+					  title: 'My Daily Activities',
+					  pieHole: 0.4,
+					};
+			
+					var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+					chart.draw(data, options);
+				  }
+				</script>
+	   <div id="donutchart" style="width: 900px; height: 500px;"></div>
+
+	   
+       <script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+  
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+			['Year', 'Sales', 'Expenses'],
+			['2004',  1000,      400],
+			['2005',  1170,      460],
+			['2006',  660,       1120],
+			['2007',  1030,      540]
+		  ]);
+  
+		  var options = {
+			title: 'Company Performance',
+			curveType: 'function',
+			legend: { position: 'bottom' }
+		  };
+  
+		  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+  
+		  chart.draw(data, options);
+		}
+	  </script>
+	  
+	  <div id="curve_chart" style="height: 500px" class="col-lg-6"></div>
+
+	   <script type="text/javascript">
+		google.charts.load('current', {'packages':['gauge']});
+		google.charts.setOnLoadCallback(drawChart);
+  
+		function drawChart() {
+  
+		  var data = google.visualization.arrayToDataTable([
+			['Label', 'Value'],
+			['Memory', 80],
+			['CPU', 55],
+			['Network', 68]
+		  ]);
+  
+		  var options = {
+			width: 1000, height: 400,
+			redFrom: 90, redTo: 100,
+			yellowFrom:75, yellowTo: 90,
+			minorTicks: 5
+		  };
+  
+		  var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+  
+		  chart.draw(data, options);
+  
+		  setInterval(function() {
+			data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+			chart.draw(data, options);
+		  }, 13000);
+		  setInterval(function() {
+			data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+			chart.draw(data, options);
+		  }, 5000);
+		  setInterval(function() {
+			data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+			chart.draw(data, options);
+		  }, 26000);
+		}
+	  </script>
+	  <div id="chart_div" style="height: 400px;" class="col-lg-12"></div>
+
+    </div>
+
+</body>
+</html>
